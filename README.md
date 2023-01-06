@@ -5,4 +5,6 @@ The ArTheming app, built with Jetpack compose, is intended for users to input im
 
 ## Screenshots
 
-<img src="docs/screenshots.png"/>
+<img src="Captura de pantalla 2023-01-06 a la(s) 9.34.12 a.m..png"/>
+<img src="Captura de pantalla 2023-01-06 a la(s) 9.35.00 a.m..png"/>
+<img src="Captura de pantalla 2023-01-06 a la(s) 9.35.23 a.m..png"/>
