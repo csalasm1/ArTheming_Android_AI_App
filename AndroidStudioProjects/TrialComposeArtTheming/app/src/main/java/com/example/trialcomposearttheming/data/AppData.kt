@@ -57,3 +57,7 @@ val listImages = listOf(
         ),
     )
 )
+
+fun getAccount(accountName: String?): Images {
+    return listImages.first { it.name == accountName }
+}

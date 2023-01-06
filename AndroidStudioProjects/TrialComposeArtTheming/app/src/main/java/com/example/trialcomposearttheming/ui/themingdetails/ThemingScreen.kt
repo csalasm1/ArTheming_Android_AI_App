@@ -33,19 +33,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.trialcomposearttheming.R
+import com.example.trialcomposearttheming.data.Images
+import com.example.trialcomposearttheming.data.listImages
+import com.example.trialcomposearttheming.data.getAccount
 
 const val MinContrastOfPrimaryVsSurface = 3f
 val OptionCardPadding = 10.dp
 
 @Composable
 fun ThemingScreen(
-    //image: Images,
-    @DrawableRes imageDisplayed: Int = R.drawable.ic_launcher_foreground,
+    accountType: String? = listImages.first().name
 ) {
-    //val onPrimaryColor: Color = MaterialTheme.colors.onPrimary
-    //val newContentColor = Color.Black.contrastAgainst(onPrimaryColor)
-
+    val account = remember(accountType) { getAccount(accountType) }
     Column(
         horizontalAlignment = Alignment.Start,
         modifier = Modifier
@@ -62,10 +61,24 @@ fun ThemingScreen(
             shape = RoundedCornerShape(16.dp)
         ) {
             Image(
-                painter = painterResource(id = imageDisplayed),
+                painter = painterResource(id = account.imageId),
                 contentDescription = null,
                 contentScale = ContentScale.Crop
             )
+            /*when(accountType) {
+                null -> Image(
+                    painter = painterResource(id = imageDisplayed),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop
+                )
+
+                else -> Image(
+                    painter = painterResource(account.imageId),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop
+                )
+            }*/
+
             Column(
                 modifier = Modifier.padding(10.dp)
             ) {

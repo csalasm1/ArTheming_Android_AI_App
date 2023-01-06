@@ -52,7 +52,7 @@ fun RallyApp() {
         appTabRowScreens.find { it.route == currentDestination?.route } ?: Home
     val scaffoldState: ScaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
-    val title by remember { mutableStateOf(currentScreen.route) }
+    //val title by remember { mutableStateOf(currentScreen.route) }
     val values = (0.. 3).toList()
     val someBoolean = remember { mutableStateOf(false) }
     var random = values.random()

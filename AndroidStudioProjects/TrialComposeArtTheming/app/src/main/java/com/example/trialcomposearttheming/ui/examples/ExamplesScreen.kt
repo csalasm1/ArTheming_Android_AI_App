@@ -3,6 +3,7 @@ package com.example.trialcomposearttheming.ui.examples
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -32,7 +33,8 @@ import com.example.trialcomposearttheming.data.Images
 @Composable
 fun ExamplesScreen(
     @DrawableRes imageDisplayed: Int = R.drawable.ic_launcher_foreground,
-    images: List<Images> = listImages
+    images: List<Images> = listImages,
+    onAccountClick: (String) -> Unit = {}
 ) {
 
     LazyColumn(
@@ -45,7 +47,10 @@ fun ExamplesScreen(
         items(images) { image ->
             exampleCard(
                 imageDisplayed = image.imageId,
-                paintingName = image.name
+                paintingName = image.name,
+                modifier = Modifier.clickable {
+                    image.name?.let { onAccountClick(it) }
+                }
             )
 
         }
@@ -55,11 +60,12 @@ fun ExamplesScreen(
 @Composable
 private fun exampleCard(
     @DrawableRes imageDisplayed: Int,
-    paintingName: String?
+    paintingName: String?,
+    modifier: Modifier = Modifier
 ) {
 
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(140.dp),
         elevation = 5.dp,

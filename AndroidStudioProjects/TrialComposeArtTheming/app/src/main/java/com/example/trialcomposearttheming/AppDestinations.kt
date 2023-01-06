@@ -5,6 +5,8 @@ import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 
 interface BottomDestination {
     val icon: ImageVector
@@ -24,6 +26,18 @@ object Theming: BottomDestination {
 object Examples: BottomDestination {
     override val icon = Icons.Filled.List
     override val route = "examples"
+}
+
+object ThemingExamples: BottomDestination {
+    override val icon = Icons.Filled.Create
+    override val route = "single_account"
+    const val accountTypeArg = "account_type"
+    val routeWithArgs = "$route/{$accountTypeArg}"
+    val arguments = listOf(
+        navArgument(accountTypeArg) { type = NavType.StringType }
+    )
+
+
 }
 
 val appTabRowScreens = listOf(Home, Theming, Examples)

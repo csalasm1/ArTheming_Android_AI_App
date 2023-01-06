@@ -15,6 +15,8 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import com.example.trialcomposearttheming.BottomDestination
+import com.example.trialcomposearttheming.Examples
+import com.example.trialcomposearttheming.Home
 import java.util.Locale
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -46,13 +48,7 @@ internal fun TopBarRow(
         },
         actions = {
             IconButton(onClick = {
-                scope.launch {
-                    scaffoldState.drawerState.apply {
-                        scope.launch {
-                            scaffoldState.drawerState.open()
-                        }
-                    }
-                }
+                navController.navigate(Examples.route)
             }) {
                 Icon(
                     imageVector = Icons.Filled.List,
@@ -60,7 +56,8 @@ internal fun TopBarRow(
                 )
             }
 
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigate(Home.route)
+             }) {
                 Icon(
                     imageVector = Icons.Filled.Add,
                     contentDescription = "Add button",

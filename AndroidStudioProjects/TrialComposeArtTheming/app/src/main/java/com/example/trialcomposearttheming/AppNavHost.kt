@@ -1,6 +1,7 @@
 package com.example.trialcomposearttheming
 
 import android.net.Uri
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.DrawableRes
@@ -48,13 +49,28 @@ fun AppNavHost(
                 imageDisplayed = imageDisplayed,
                 imageUri = selectImage)
         }
-        composable(route = Theming.route) {
-            ThemingScreen(
-                imageDisplayed = imageDisplayed
+        //composable(route = Theming.route) {
+        //    ThemingScreen()
+        //}
+        composable(route = Examples.route) {
+            ExamplesScreen(
+                onAccountClick = { accountType ->
+                    navController.navigateToSingleAccount(accountType)
+                }
             )
         }
-        composable(route = Examples.route) {
-            ExamplesScreen()
+
+        composable(
+            route = ThemingExamples.routeWithArgs,
+            arguments = ThemingExamples.arguments) {
+                navBackStackEntry ->
+            var accountType =
+                navBackStackEntry.arguments?.getString(ThemingExamples.accountTypeArg)
+            Log.d("image_Change", "${accountType}")
+            ThemingScreen(
+                accountType = accountType
+            )
+
         }
     }
 }
@@ -76,5 +92,5 @@ fun NavHostController.navigateSingleTopTo(route: String) =
         restoreState = true
     }
 private fun NavHostController.navigateToSingleAccount(accountType: String) {
-    this.navigateSingleTopTo("${Theming.route}/$accountType")
+    this.navigateSingleTopTo("${ThemingExamples.route}/$accountType")
 }
