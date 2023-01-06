@@ -49,9 +49,9 @@ fun AppNavHost(
                 imageDisplayed = imageDisplayed,
                 imageUri = selectImage)
         }
-        //composable(route = Theming.route) {
-        //    ThemingScreen()
-        //}
+        composable(route = Theming.route) {
+            ThemingScreen()
+        }
         composable(route = Examples.route) {
             ExamplesScreen(
                 onAccountClick = { accountType ->
@@ -66,7 +66,7 @@ fun AppNavHost(
                 navBackStackEntry ->
             var accountType =
                 navBackStackEntry.arguments?.getString(ThemingExamples.accountTypeArg)
-            Log.d("image_Change", "${accountType}")
+            Log.d("image_Change", "$accountType")
             ThemingScreen(
                 accountType = accountType
             )

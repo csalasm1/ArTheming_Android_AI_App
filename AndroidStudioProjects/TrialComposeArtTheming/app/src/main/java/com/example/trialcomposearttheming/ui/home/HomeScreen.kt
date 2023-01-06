@@ -25,6 +25,7 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import com.example.trialcomposearttheming.R
+import com.example.trialcomposearttheming.ui.examples.exampleCard
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
@@ -48,9 +49,11 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.padding(20.dp))
 
-        Image(painter = painterResource(id = imageDisplayed),
-            contentDescription = null,
-        contentScale = ContentScale.Fit)
+        exampleCard(
+            imageDisplayed = imageDisplayed,
+            paintingName = "",
+            modifier = Modifier.padding(5.dp)
+        )
 
         Spacer(modifier = Modifier.padding(20.dp))
 

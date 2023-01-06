@@ -65,30 +65,18 @@ fun ThemingScreen(
                 contentDescription = null,
                 contentScale = ContentScale.Crop
             )
-            /*when(accountType) {
-                null -> Image(
-                    painter = painterResource(id = imageDisplayed),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop
-                )
-
-                else -> Image(
-                    painter = painterResource(account.imageId),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop
-                )
-            }*/
-
             Column(
                 modifier = Modifier.padding(10.dp)
             ) {
-                Text(
-                    text = "Painting Name",
-                    color = MaterialTheme.colors.onSecondary,
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 35.sp,
-                    modifier = Modifier.shadow(elevation = 4.dp)
-                )
+                account.name?.let {
+                    Text(
+                        text = it,
+                        color = MaterialTheme.colors.onSecondary,
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 35.sp,
+                        modifier = Modifier.shadow(elevation = 4.dp)
+                    )
+                }
             }
         }
 

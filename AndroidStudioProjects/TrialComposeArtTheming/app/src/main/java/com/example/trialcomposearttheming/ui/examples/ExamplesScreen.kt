@@ -58,7 +58,7 @@ fun ExamplesScreen(
 }
 
 @Composable
-private fun exampleCard(
+fun exampleCard(
     @DrawableRes imageDisplayed: Int,
     paintingName: String?,
     modifier: Modifier = Modifier
